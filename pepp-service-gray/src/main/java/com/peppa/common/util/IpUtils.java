@@ -18,12 +18,12 @@ public class IpUtils {
 
     public static Boolean isLocalAddress(String ipAddress) {
         if (ipAddress == null || ipAddress.length() == 0 || "unknown".equalsIgnoreCase(ipAddress)) {
-            return Boolean.valueOf(true);
+            return Boolean.TRUE;
         }
         if (ipAddress.equals("127.0.0.1") || ipAddress.equals("0:0:0:0:0:0:0:1")) {
-            return Boolean.valueOf(true);
+            return Boolean.TRUE;
         }
-        return Boolean.valueOf(false);
+        return Boolean.FALSE;
     }
 
 
