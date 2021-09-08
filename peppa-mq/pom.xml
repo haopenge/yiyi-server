@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.peppa</groupId>
-    <artifactId>peppa-mq-yiyi</artifactId>
+    <artifactId>yiyi-peppa-mq</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>peppa-mq</name>
     <description>peppa-mq</description>
@@ -50,14 +50,14 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-test</artifactId>
-            <version>2.5.4</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>com</groupId>
+            <artifactId>yiyi-pepp-service-gray</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

@@ -12,8 +12,7 @@ import java.util.StringTokenizer;
 
 
 @AnnoStrategy
-public class HeaderServerIplistStrategy
-        extends StrategyAbstract {
+public class HeaderServerIplistStrategy extends StrategyAbstract {
     private final String header_key = "svips";
 
     public HeaderServerIplistStrategy() {

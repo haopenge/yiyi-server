@@ -13,8 +13,7 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Pattern;
 
-public class StrategyAbstract
-        implements Strategy {
+public class StrategyAbstract implements Strategy {
     final Logger logger = LoggerFactory.getLogger(getClass());
     public String name = "";
     private int order = 0;

@@ -17,7 +17,7 @@ import java.lang.annotation.Target;
 @ConditionalOnProperty(prefix = "peppa", name = {"gray"}, havingValue = "true")
 public class AnnotationScan {
     @Autowired
-    ApplicationContext applicationContext;
+    private ApplicationContext applicationContext;
 
     @Bean(name = {"strategyFactroy"}, initMethod = "init")
     StrategyFactory strategyFactroy() {

@@ -6,10 +6,7 @@ import com.netflix.loadbalancer.RoundRobinRule;
 import com.netflix.loadbalancer.Server;
 import com.peppa.common.grayconfig.Strategy.Strategy;
 import com.peppa.common.grayconfig.Strategy.factory.StrategyFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -20,15 +17,8 @@ import java.util.StringTokenizer;
 @Configuration
 @ConditionalOnProperty(prefix = "peppa", name = {"gray"}, havingValue = "true")
 @Scope("prototype")
-public class MyGrayBalancerRule
-        extends RoundRobinRule {
-    private final Logger logger = LoggerFactory.getLogger(getClass());
-
-    @Value("${graystage:}")
-    private String graystagestr;
-
-    @Autowired
-    private StrategyFactory strategyFactory;
+@Slf4j
+public class MyGrayBalancerRule extends RoundRobinRule {
 
     public Server choose(ILoadBalancer balancer, Object key) {
         try {
@@ -37,11 +27,11 @@ public class MyGrayBalancerRule
                 return chooseDeault(balancer, key);
             }
         } catch (Exception e) {
-            this.logger.error("choose", e);
+            log.error("choose", e);
         }
         try {
             String whiteliststr = ThreadAttributes.getHeaderValue("graywl");
-            this.logger.debug("白名单:{}", whiteliststr);
+            log.debug("白名单:{}", whiteliststr);
 
             if (whiteliststr != null) {
                 StringTokenizer stringTokenizer = new StringTokenizer(whiteliststr, ",");
@@ -53,7 +43,7 @@ public class MyGrayBalancerRule
                     }
                     Strategy strategy = StrategyFactory.getStrategy(whitestrategy);
                     if (strategy == null) {
-                        this.logger.debug("白名单策略:{}不存在", whitestrategy);
+                        log.debug("白名单策略:{}不存在", whitestrategy);
                         continue;
                     }
                     Server server = strategy.getServer(balancer);
@@ -61,12 +51,12 @@ public class MyGrayBalancerRule
                         return server;
                     }
                 }
-                this.logger.debug("白名单中的策略没有命中任何服务器{}", whiteliststr);
+                log.debug("白名单中的策略没有命中任何服务器{}", whiteliststr);
                 return null;
             }
 
             String blackliststr = ThreadAttributes.getHeaderValue("graybl");
-            this.logger.debug("黑名单:{}", blackliststr);
+            log.debug("黑名单:{}", blackliststr);
             for (Strategy strategy : StrategyFactory.getAllStrategy()) {
 
                 String strategyname = strategy.getName();
@@ -75,13 +65,13 @@ public class MyGrayBalancerRule
                         blackliststr.indexOf(strategyname) >= 0) {
                     continue;
                 }
-                this.logger.debug("{}策略生效！", strategyname);
+                log.debug("{}策略生效！", strategyname);
                 Server server = strategy.getServer(balancer);
                 if (server != null)
                     return server;
             }
         } catch (Exception e) {
-            this.logger.error("choose", e);
+            log.error("choose", e);
         }
         return chooseDeault(balancer, key);
     }
@@ -91,10 +81,10 @@ public class MyGrayBalancerRule
         try {
             String threadname = Thread.currentThread().getName();
             if (threadname.indexOf("zipkin") < 0) {
-                this.logger.info("最后缺省随机策略 all server size：{},{}", Integer.valueOf(balancer.getAllServers().size()), server.getHost());
+                log.info("最后缺省随机策略 all server size：{},{}", Integer.valueOf(balancer.getAllServers().size()), server.getHost());
             }
         } catch (Exception e) {
-            this.logger.error("chooseDeault", e);
+            log.error("chooseDeault", e);
         }
         return server;
     }

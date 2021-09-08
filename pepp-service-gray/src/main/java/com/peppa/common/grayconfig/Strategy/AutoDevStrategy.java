@@ -12,8 +12,7 @@ import java.util.Map;
 
 
 @AnnoStrategy
-public class AutoDevStrategy
-        extends StrategyAbstract {
+public class AutoDevStrategy extends StrategyAbstract {
     @Value("${podenv:}")
     private String podenv;
 
@@ -21,7 +20,6 @@ public class AutoDevStrategy
         setName("A_DEV_");
         setOrder(8);
     }
-
 
     public Server getServer(ILoadBalancer balancer) {
         try {

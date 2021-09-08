@@ -1,4 +1,4 @@
-package com.peppa.use;
+package com.mq;
 
 import com.peppa.common.mq.producter.PeppaMqProduceMessage;
 import com.peppa.common.mq.producter.PeppaMqProducter;

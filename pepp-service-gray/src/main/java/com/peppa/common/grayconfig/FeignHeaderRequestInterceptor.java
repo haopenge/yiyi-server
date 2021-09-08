@@ -3,8 +3,7 @@ package com.peppa.common.grayconfig;
 import com.peppa.common.util.IpUtils;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
@@ -18,15 +17,9 @@ import java.util.*;
 
 @Configuration
 @ConditionalOnProperty(prefix = "peppa", name = {"gray"}, havingValue = "true")
-public class FeignHeaderRequestInterceptor
-        implements RequestInterceptor {
-    private final Logger logger = LoggerFactory.getLogger(getClass());
+@Slf4j
+public class FeignHeaderRequestInterceptor implements RequestInterceptor {
 
-    public static final String HTTP_X_FORWARDED_FOR = "x-forwarded-for";
-
-    public static final String HUOHUA_PREFIX = "huohua-";
-
-    public static final String HUOHUA_CALL_IP = "call-ip";
     @Value("${forceHeader:}")
     private String forceHeader;
     private HashMap forceHeaderMap;
@@ -50,7 +43,7 @@ public class FeignHeaderRequestInterceptor
                 this.forceHeaderMap.put(headerkey, headercont);
             }
         } catch (Exception e) {
-            this.logger.error("initForceHeader", e);
+            log.error("initForceHeader", e);
             this.forceHeaderMap = null;
         }
     }
@@ -60,7 +53,7 @@ public class FeignHeaderRequestInterceptor
         String podkey = "huohua-".concat("podenv");
         String podenv = ThreadAttributes.getHeaderValue("podenv");
         if (podenv != null && podenv.trim().length() > 0) {
-            this.logger.info("feign调用:{}threadlocal中带独立环境标记{},继续在feign调用中传递下去", template.url(), podenv);
+            log.info("feign调用:{}threadlocal中带独立环境标记{},继续在feign调用中传递下去", template.url(), podenv);
             template.header(podkey, new String[]{podenv});
         }
 
@@ -80,7 +73,7 @@ public class FeignHeaderRequestInterceptor
                 ThreadAttributes.setThreadAttribute(key, Value);
             }
         } catch (Exception e) {
-            this.logger.error("setForceHeader", e);
+            log.error("setForceHeader", e);
         }
     }
 
@@ -123,9 +116,9 @@ public class FeignHeaderRequestInterceptor
             }
             setForceHeader(template);
 
-            this.logger.info("feign interceptor header:{}", template);
+            log.info("feign interceptor header:{}", template);
         } catch (Exception e) {
-            this.logger.error("", e);
+            log.error("", e);
         }
     }
 }

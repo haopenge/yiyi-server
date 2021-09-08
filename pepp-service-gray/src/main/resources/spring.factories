@@ -1,0 +1,14 @@
+#org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+#com.peppa.common.grayconfig.WebConfig,\
+#com.peppa.common.grayconfig.MyGrayBalancerRule,\
+#com.peppa.common.grayconfig.FeignHeaderRequestInterceptor,\
+#com.peppa.common.grayconfig.Strategy.StrategyAspect,\
+#com.peppa.common.grayconfig.Strategy.factory.AnnotationScan,\
+#com.peppa.common.grayconfig.Strategy.AutoDevStrategy,\
+#com.peppa.common.grayconfig.Strategy.AutoIpStrategy,\
+#com.peppa.common.grayconfig.Strategy.HeaderServerIplistStrategy,\
+#com.peppa.common.grayconfig.Strategy.HeaderIplistStrategy,\
+#com.peppa.common.grayconfig.Strategy.HeaderPodEnvStrategy,\
+#com.peppa.common.grayconfig.Strategy.ServerUserNameStrategy,\
+#com.peppa.common.grayconfig.Strategy.ServerTagStrategy,\
+#com.peppa.common.grayconfig.Strategy.ServerIpStrategy

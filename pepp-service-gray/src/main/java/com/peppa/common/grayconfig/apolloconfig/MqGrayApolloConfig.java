@@ -5,29 +5,20 @@ import com.ctrip.framework.apollo.ConfigService;
 import com.ctrip.framework.apollo.model.ConfigChangeEvent;
 import com.ctrip.framework.apollo.spring.annotation.ApolloConfigChangeListener;
 import com.peppa.common.grayconfig.ThreadAttributes;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
 
-
 @Configuration
 @ConditionalOnProperty(prefix = "peppa", name = {"gray"}, havingValue = "true")
+@Slf4j
 public class MqGrayApolloConfig {
-    private final Logger logger = LoggerFactory.getLogger(getClass());
-
-    public static final String MQ_GRAY_KEY = "mqconsumer.gray";
-
-    public static final String WX_GRAY_KEY = "wxlistener.gray";
-    public static final String FORCE_GRAY_KEY = "podenvforce.gray";
     private static String forcePodenv = "";
 
-
     private static HashMap<String, String> MQ_GRAY_CONFIG = null;
-
 
     private static HashMap<String, String> WX_GRAY_CONFIG = null;
 
@@ -49,7 +40,7 @@ public class MqGrayApolloConfig {
                     String v = value.substring(pos + 1);
                     newmap.put(k, v);
                 } catch (Exception e) {
-                    this.logger.error("解析mqconsumer灰度设置出错:{}", value, e);
+                    log.error("解析mqconsumer灰度设置出错:{}", value, e);
                 }
             }
         }
@@ -68,27 +59,27 @@ public class MqGrayApolloConfig {
 
     @ApolloConfigChangeListener(interestedKeys = {"podenvforce.gray"})
     private void configChangeListter3(ConfigChangeEvent changeEvent) {
-        this.logger.info("**************Apollo动态修改配置**************");
+        log.info("**************Apollo动态修改配置**************");
         for (String changedKey : changeEvent.changedKeys()) {
-            this.logger.info("changedKey :{}", changedKey);
+            log.info("changedKey :{}", changedKey);
             String value = changeEvent.getChange(changedKey).getNewValue();
-            this.logger.info("changedValue :{}", value);
+            log.info("changedValue :{}", value);
             if (changedKey.equals("podenvforce.gray")) {
                 forcePodenv = (value == null) ? "" : value;
-                this.logger.info("强制灰度环境：{}", forcePodenv);
+                log.info("强制灰度环境：{}", forcePodenv);
                 return;
             }
         }
         forcePodenv = "";
-        this.logger.info("强制灰度环境：{}", forcePodenv);
+        log.info("强制灰度环境：{}", forcePodenv);
     }
 
     private HashMap checkConfig(ConfigChangeEvent changeEvent, String key) {
-        this.logger.info("**************Apollo动态修改配置**************");
+        log.info("**************Apollo动态修改配置**************");
         for (String changedKey : changeEvent.changedKeys()) {
-            this.logger.info("changedKey :{}", changedKey);
+            log.info("changedKey :{}", changedKey);
             String value = changeEvent.getChange(changedKey).getNewValue();
-            this.logger.info("changedValue :{}", value);
+            log.info("changedValue :{}", value);
             if (changedKey.equals(key)) {
                 return freshConfig(key);
             }
