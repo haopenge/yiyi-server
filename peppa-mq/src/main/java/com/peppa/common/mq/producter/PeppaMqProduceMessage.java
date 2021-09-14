@@ -1,12 +1,12 @@
 package com.peppa.common.mq.producter;
 
+import com.peppa.common.grayconfig.ThreadAttributes;
 import com.peppa.common.mq.acc.MqTrace;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.producer.*;
 import org.apache.rocketmq.client.producer.selector.SelectMessageQueueByHash;
 import org.apache.rocketmq.common.message.Message;
 
-import java.lang.reflect.Method;
 import java.nio.charset.StandardCharsets;
 
 @Slf4j
@@ -242,9 +242,7 @@ public class PeppaMqProduceMessage {
         boolean isThreadlocalSet = false;
 
         try {
-            Class<?> threadlocalClazz = Class.forName("com.peppa.grayconfig.ThreadAttributes");
-            Method method = threadlocalClazz.getMethod("getHeaderValue", String.class);
-            String headerpodenv = (String) method.invoke(null, "podenv");
+            String headerpodenv = ThreadAttributes.getHeaderValue("podenv");
 
             if (headerpodenv != null && !headerpodenv.equals("qa") && !headerpodenv.equals("dev") && !headerpodenv.equals("sim")) {
                 isThreadlocalSet = true;

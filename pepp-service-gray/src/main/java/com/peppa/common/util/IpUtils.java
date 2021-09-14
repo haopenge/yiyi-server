@@ -65,7 +65,7 @@ public class IpUtils {
                 while (addresses.hasMoreElements()) {
 
                     ip = addresses.nextElement();
-                    if (ip != null && ip instanceof java.net.Inet4Address) {
+                    if (ip instanceof java.net.Inet4Address) {
 
                         logger.debug("本机的IP = " + ip.getHostAddress());
                         return ip.getHostAddress();

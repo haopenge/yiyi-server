@@ -12,6 +12,8 @@ import org.springframework.context.annotation.Configuration;
 import javax.annotation.PostConstruct;
 import java.util.HashMap;
 
+import static com.peppa.common.constant.ConstantProperties.INDEPENDENT_ENV_HEAD_KEY;
+
 @Configuration
 @ConditionalOnProperty(prefix = "peppa", name = {"gray"}, havingValue = "true")
 @Slf4j
@@ -115,7 +117,7 @@ public class MqGrayApolloConfig {
     public static String invokeOpenidPodEnv(String openid) {
         String podenv = getOpenidPodEnv(openid);
         if (podenv != null && podenv.trim().length() > 0) {
-            ThreadAttributes.setThreadAttribute("huohua-".concat("podenv"), podenv);
+            ThreadAttributes.setThreadAttribute(INDEPENDENT_ENV_HEAD_KEY, podenv);
         }
         return podenv;
     }
@@ -123,7 +125,7 @@ public class MqGrayApolloConfig {
 
     public static String tryForcePodEnv() {
         if (forcePodenv != null && forcePodenv.trim().length() > 0) {
-            ThreadAttributes.setThreadAttribute("huohua-".concat("podenv"), forcePodenv);
+            ThreadAttributes.setThreadAttribute(INDEPENDENT_ENV_HEAD_KEY, forcePodenv);
         }
         return forcePodenv;
     }

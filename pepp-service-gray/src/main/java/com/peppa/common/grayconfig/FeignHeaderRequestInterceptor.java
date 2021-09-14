@@ -22,7 +22,8 @@ public class FeignHeaderRequestInterceptor implements RequestInterceptor {
 
     @Value("${forceHeader:}")
     private String forceHeader;
-    private HashMap forceHeaderMap;
+
+    private HashMap<String,Object> forceHeaderMap;
 
     @PostConstruct
     private void initForceHeader() {
@@ -40,7 +41,7 @@ public class FeignHeaderRequestInterceptor implements RequestInterceptor {
                     continue;
                 String headerkey = str.substring(0, ind).trim();
                 String headercont = str.substring(ind + 1).trim();
-                this.forceHeaderMap.put(headerkey, headercont);
+                forceHeaderMap.put(headerkey, headercont);
             }
         } catch (Exception e) {
             log.error("initForceHeader", e);
@@ -54,22 +55,22 @@ public class FeignHeaderRequestInterceptor implements RequestInterceptor {
         String podenv = ThreadAttributes.getHeaderValue("podenv");
         if (podenv != null && podenv.trim().length() > 0) {
             log.info("feign调用:{}threadlocal中带独立环境标记{},继续在feign调用中传递下去", template.url(), podenv);
-            template.header(podkey, new String[]{podenv});
+            template.header(podkey, podenv);
         }
 
         String myip = IpUtils.getMyIp();
         if (myip != null) {
-            template.header("huohua-".concat("call-ip"), new String[]{myip});
+            template.header("huohua-".concat("call-ip"), myip);
         }
         if (this.forceHeaderMap == null)
             return;
         try {
-            Set<Map.Entry> entries = this.forceHeaderMap.entrySet();
+            Set<Map.Entry<String, Object>> entries = forceHeaderMap.entrySet();
 
             for (Map.Entry entry : entries) {
                 String key = (String) entry.getKey();
                 String Value = (String) entry.getValue();
-                template.header(key, new String[]{Value});
+                template.header(key, Value);
                 ThreadAttributes.setThreadAttribute(key, Value);
             }
         } catch (Exception e) {
@@ -95,14 +96,14 @@ public class FeignHeaderRequestInterceptor implements RequestInterceptor {
 
                     if (name.equals("x-forwarded-for")) {
                         String values = request.getHeader(name);
-                        template.header(name, new String[]{values});
+                        template.header(name,values);
                         ThreadAttributes.setThreadAttribute("x-forwarded-for", values);
                         find_xforwardid = true;
                     }
 
                     if (name.startsWith("huohua-")) {
                         String values = request.getHeader(name);
-                        template.header(name, new String[]{values});
+                        template.header(name, values);
                         ThreadAttributes.setThreadAttribute(name, values);
                     }
                 }
@@ -111,7 +112,7 @@ public class FeignHeaderRequestInterceptor implements RequestInterceptor {
 
             if (!find_xforwardid) {
                 String remoteAddr = IpUtils.getIpAddr(request);
-                template.header("x-forwarded-for", new String[]{remoteAddr});
+                template.header("x-forwarded-for", remoteAddr);
                 ThreadAttributes.setThreadAttribute("x-forwarded-for", remoteAddr);
             }
             setForceHeader(template);

@@ -26,16 +26,15 @@ public class RequestHeaderHandlerInterceptor implements HandlerInterceptor {
         }
         try {
             MqGrayApolloConfig.tryForcePodEnv();
-            HttpServletRequest request = httpServletRequest;
-            Enumeration<String> headerNames = request.getHeaderNames();
+            Enumeration<String> headerNames = httpServletRequest.getHeaderNames();
             boolean find_xforwardid = false;
             if (headerNames != null) {
                 while (headerNames.hasMoreElements()) {
                     String name = headerNames.nextElement();
                     if (name.equals("x-forwarded-for")) {
-                        String values = request.getHeader(name);
-                        if (IpUtils.isLocalAddress(values).booleanValue()) {
-                            values = IpUtils.getIpAddr(request);
+                        String values = httpServletRequest.getHeader(name);
+                        if (IpUtils.isLocalAddress(values)) {
+                            values = IpUtils.getIpAddr(httpServletRequest);
                         }
                         ThreadAttributes.setThreadAttribute("x-forwarded-for", values);
                         log.info("http 拦截 header:{},{}", name, values);
@@ -43,14 +42,14 @@ public class RequestHeaderHandlerInterceptor implements HandlerInterceptor {
                     }
 
                     if (name.startsWith("huohua-")) {
-                        String values = request.getHeader(name);
+                        String values = httpServletRequest.getHeader(name);
                         log.info("http 拦截 header:{},{}", name, values);
                         ThreadAttributes.setThreadAttribute(name, values);
                     }
                 }
             }
             if (!find_xforwardid) {
-                String remoteAddr = IpUtils.getIpAddr(request);
+                String remoteAddr = IpUtils.getIpAddr(httpServletRequest);
                 log.info("http HTTP_X_FORWARDED_FOR增加remoteAddr header:{}", remoteAddr);
                 ThreadAttributes.setThreadAttribute("x-forwarded-for", remoteAddr);
             }
