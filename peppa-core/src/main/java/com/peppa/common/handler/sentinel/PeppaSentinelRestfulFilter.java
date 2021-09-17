@@ -12,13 +12,13 @@ import com.alibaba.csp.sentinel.adapter.servlet.util.FilterUtil;
 import com.alibaba.csp.sentinel.context.ContextUtil;
 import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.alibaba.csp.sentinel.util.StringUtil;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.AntPathMatcher;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.DispatcherServlet;
@@ -135,7 +135,7 @@ public class PeppaSentinelRestfulFilter implements Filter {
 
 
         UrlCleaner urlCleaner = WebCallbackManager.getUrlCleaner();
-        if (StringUtils.isNotEmpty(pattern)) {
+        if (!StringUtils.isEmpty(pattern)) {
             target = pattern;
         }
         if (urlCleaner != null) {

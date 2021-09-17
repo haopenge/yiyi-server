@@ -17,84 +17,35 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <spring-cloud-version>2.1.0.RELEASE</spring-cloud-version>
     </properties>
 
-    <distributionManagement>
-        <repository>
-            <id>releases</id>
-            <name>Nexus Release Repository</name>
-            <url>http://maven.bg.huohua.cn/repository/releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>snapshots</id>
-            <name>Nexus Snapshot Repository</name>
-            <url>http://maven.bg.huohua.cn/repository/snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
     <dependencies>
-        <!--    mqclient端的启动时机优化与zipkin追踪-->
-        <dependency>
-            <groupId>com.peppa.common</groupId>
-            <artifactId>peppa-mq</artifactId>
-            <version>1.5.1-SNAPSHOT</version>
-        </dependency>
-        <!--    xxljob的zipkin追踪支持-->
-        <dependency>
-            <groupId>com.peppa.common</groupId>
-            <artifactId>peppa-service-trace</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
         <!--    连接池使用-->
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>3.14.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-            <version>5.1.5.RELEASE</version>
-            <scope>provided</scope>
+            <version>3.14.9</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.6</version>
-            <scope>provided</scope>
+            <version>1.18.20</version>
         </dependency>
+
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
             <version>1.2.78</version>
-            <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-aop</artifactId>
-            <version>2.1.3.RELEASE</version>
-            <scope>provided</scope>
-        </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
-            <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-openfeign</artifactId>
-            <version>2.0.2.RELEASE</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-sleuth-core</artifactId>
-            <version>2.1.0.RELEASE</version>
-            <scope>provided</scope>
-        </dependency>
+
         <dependency>
             <groupId>com.netflix.eureka</groupId>
             <artifactId>eureka-client</artifactId>
@@ -105,92 +56,107 @@
                 </exclusion>
             </exclusions>
             <version>1.9.3</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-annotation-aspectj</artifactId>
             <version>1.5.1</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.prometheus</groupId>
             <artifactId>simpleclient</artifactId>
             <version>0.0.26</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
             <version>1.1.3</version>
-            <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-            <version>2.1.3.RELEASE</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>5.1.5.RELEASE</version>
-            <scope>provided</scope>
-        </dependency>
+
         <dependency>
             <groupId>com.ctrip.framework.apollo</groupId>
             <artifactId>apollo-peppa-client</artifactId>
             <version>1.2.0</version>
-            <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-            <version>2.1.0.RELEASE</version>
-            <scope>provided</scope>
-        </dependency>
+
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-datasource-zookeeper</artifactId>
             <version>1.6.3</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>log4j</groupId>
-                    <artifactId>log4j</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.alibaba.csp</groupId>
             <artifactId>sentinel-datasource-extension</artifactId>
             <version>1.6.3</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-context</artifactId>
-            <version>2.1.0.RELEASE</version>
-            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>io.zipkin.brave</groupId>
             <artifactId>brave</artifactId>
             <version>5.6.1.0-SNAPSHOT</version>
-            <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+
+        <!-- =========================== spring-boot  start =========================== -->
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
+            <artifactId>spring-boot-actuator-autoconfigure</artifactId>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-actuator-autoconfigure</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+
+        <!-- =========================== spring-boot  end =========================== -->
+
+        <!-- =========================== spring-cloud start =========================== -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-context</artifactId>
+            <version>${spring-cloud-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <version>${spring-cloud-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+            <version>${spring-cloud-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-sleuth-core</artifactId>
+            <version>${spring-cloud-version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+            <version>${spring-cloud-version}</version>
+        </dependency>
+
+        <!-- =========================== spring-cloud end =========================== -->
+
+
     </dependencies>
 
 
