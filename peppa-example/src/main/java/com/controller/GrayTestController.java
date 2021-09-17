@@ -1,6 +1,7 @@
 package com.controller;
 
 
+import com.husky.intf.GrayTestService;
 import com.mq.MqTopicConstant;
 import com.peppa.common.mq.producter.PeppaMqProduceMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +16,26 @@ public class GrayTestController {
     @Autowired
     private PeppaMqProduceMessage message;
 
+    @Autowired
+    private GrayTestService grayTestService;
+
 
     @GetMapping("/test")
     public String hello() {
         try {
-            message.sendMessage(MqTopicConstant.SLEEP, "睡觉咯，睡觉咯，yiyi");
+            message.sendMessage(MqTopicConstant.EAT, "吃饭了，吃饭了，yiyi");
+            return "success";
         } catch (Exception e) {
             e.printStackTrace();
         }
         return "error";
     }
+
+    @GetMapping("/eat_after")
+    public String eatAfter(String who) {
+        grayTestService.eatAfter(who);
+        return "success";
+    }
+
+
 }

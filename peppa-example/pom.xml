@@ -5,9 +5,9 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.4</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>1.5.4.RELEASE</version>
     </parent>
+
     <groupId>com</groupId>
     <artifactId>peppa-example</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -18,28 +18,47 @@
     </properties>
     <dependencies>
 
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web -->
+        <dependency>
+            <groupId>com.husky</groupId>
+            <artifactId>husky-feign-intf</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!-- =========================== spring-boot start =========================== -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <optional>true</optional>
-        </dependency>
+        <!-- =========================== spring-boot end =========================== -->
+
+
+        <!-- =========================== my service start =========================== -->
 
         <dependency>
             <groupId>com</groupId>
             <artifactId>yiyi-pepp-service-gray</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
         <dependency>
             <groupId>com.peppa</groupId>
             <artifactId>yiyi-peppa-mq</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>com</groupId>
+            <artifactId>yiyi-peppa-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!-- =========================== my service end =========================== -->
+
     </dependencies>
 
 </project>

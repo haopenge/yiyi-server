@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<included>
+
+    <contextListener class="com.peppa.common.handler.logConfig.LogbackStartupListener"/>
+
+<!--    <property name="log-pattern"-->
+<!--              value="%d{yyyy-MM-dd/HH:mm:ss.SSS}|[%t] %-5level %logger{50} %line - %m|TraceId:%X{X-B3-TraceId:-}|SpanId:%X{X-B3-SpanId:-}%n"/>-->
+    <property name="log-pattern"
+              value="%clr([%d{yyyy-MM-dd HH:mm:ss.SSS}]){faint} %clr(%5p) %clr(---){faint} %clr(%-80.80logger{79}){cyan} %clr(:){faint} %m%n%wEx"/>
+    <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
+    <conversionRule conversionWord="wex"
+                    converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
+    <conversionRule conversionWord="wEx"
+                    converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>${log-pattern}</pattern>
+        </layout>
+    </appender>
+
+    <appender name="logfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <file>/opt/app/logs/logstash.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/opt/app/logs/logstash.%d{yyyyMMdd}.log</fileNamePattern>
+            <!--<maxFileSize>1024MB</maxFileSize>-->
+            <!--<maxHistory>32</maxHistory>-->
+            <!--<totalSizeCap>8GB</totalSizeCap>-->
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+<!--            <customFields>{"MYFIELD":"${POD_NAME:-warn}"}</customFields>-->
+<!--            <includeMdcKeyName>X-B3-TraceId</includeMdcKeyName>-->
+<!--            <includeMdcKeyName>X-B3-SpanId</includeMdcKeyName>-->
+<!--            <includeMdcKeyName>parentId</includeMdcKeyName>-->
+<!--            <includeMdcKeyName>X-B3-ParentSpanId</includeMdcKeyName>-->
+        </encoder>
+    </appender>
+    <!-- 异步输出 -->
+    <appender name ="ASYNC" class= "ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold >0</discardingThreshold>
+        <queueSize>256</queueSize>
+        <appender-ref ref="logfile"/>
+    </appender>
+
+    <appender name="requestlogfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <append>true</append>
+        <file>/opt/app/logs/requestlog.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/opt/app/logs/requestlog.%d{yyyyMMdd}.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder class="net.logstash.logback.encoder.LogstashEncoder">
+            <includeMdcKeyName>ip</includeMdcKeyName>
+            <includeMdcKeyName>uri</includeMdcKeyName>
+            <includeMdcKeyName>reqsvr</includeMdcKeyName>
+            <includeMdcKeyName>method</includeMdcKeyName>
+            <includeMdcKeyName>param</includeMdcKeyName>
+            <includeMdcKeyName>podenv</includeMdcKeyName>
+            <includeMdcKeyName>code</includeMdcKeyName>
+            <includeMdcKeyName>cost</includeMdcKeyName>
+            <includeMdcKeyName>X-B3-TraceId</includeMdcKeyName>
+            <includeMdcKeyName>X-B3-SpanId</includeMdcKeyName>
+            <includeMdcKeyName>parentId</includeMdcKeyName>
+            <includeMdcKeyName>X-B3-ParentSpanId</includeMdcKeyName>
+
+        </encoder>
+    </appender>
+    <!-- 异步输出http request请求 -->
+    <appender name ="REQASYNC" class= "ch.qos.logback.classic.AsyncAppender">
+        <discardingThreshold >0</discardingThreshold>
+        <queueSize>256</queueSize>
+        <appender-ref ref="requestlogfile"/>
+    </appender>
+
+    <!--root-->
+    <!-- 开发环境 输出到控制台和文件 -->
+    <springProfile name="dev,default">
+        <root level="INFO">
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref ="ASYNC"/>
+        </root>
+        <!--灰度-->
+        <logger name="com.peppa.common.grayconfig" additivity="false">
+            <level value="INFO"/>
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref ="ASYNC"/>
+        </logger>
+        <!--http请求拦截-->
+        <logger name="com.peppa.common.handler.LogRequestInterceptor" additivity="false">
+            <level value="INFO"/>
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref ="REQASYNC"/>
+        </logger>
+    </springProfile>
+
+
+    <!-- 测试环境 输出info及以上日志 -->
+    <springProfile name="qa,sim,res">
+        <root level="INFO">
+            <appender-ref ref="STDOUT" />
+            <appender-ref ref ="ASYNC"/>
+        </root>
+        <!--灰度-->
+        <logger name="com.peppa.common.grayconfig" additivity="false">
+            <level value="WARN"/>
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref ="ASYNC"/>
+        </logger>
+        <!--http请求拦截-->
+        <logger name="com.peppa.common.handler.LogRequestInterceptor" additivity="false">
+            <level value="INFO"/>
+            <appender-ref ref="STDOUT"/>
+            <appender-ref ref ="REQASYNC"/>
+        </logger>
+    </springProfile>
+
+    <!-- 线上环境 -->
+    <springProfile name="online">
+        <root level="INFO">
+            <appender-ref ref ="ASYNC"/>
+        </root>
+        <!--灰度-->
+        <logger name="com.peppa.common.grayconfig" additivity="false">
+            <level value="WARN"/>
+            <appender-ref ref ="ASYNC"/>
+        </logger>
+        <!--http请求拦截-->
+        <logger name="com.peppa.common.handler.LogRequestInterceptor" additivity="false">
+            <level value="INFO"/>
+            <appender-ref ref ="REQASYNC"/>
+        </logger>
+    </springProfile>
+
+</included>

@@ -5,9 +5,9 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.5.4</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <version>1.5.4.RELEASE</version>
     </parent>
+
     <groupId>com</groupId>
     <artifactId>yiyi-peppa-service-gray</artifactId>
     <version>0.0.1-SNAPSHOT</version>

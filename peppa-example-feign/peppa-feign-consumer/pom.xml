@@ -34,17 +34,6 @@
 
         <!-- =========================== spring-boot end =========================== -->
 
-
-        <!-- =========================== spring-cloud start =========================== -->
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-feign</artifactId>
-            <version>1.4.7.RELEASE</version>
-        </dependency>
-
-
-        <!-- =========================== spring-cloud end =========================== -->
-
     </dependencies>
 
 

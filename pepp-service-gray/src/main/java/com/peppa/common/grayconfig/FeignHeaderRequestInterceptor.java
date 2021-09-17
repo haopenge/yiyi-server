@@ -67,12 +67,12 @@ public class FeignHeaderRequestInterceptor implements RequestInterceptor {
         try {
             Set<Map.Entry<String, Object>> entries = forceHeaderMap.entrySet();
 
-            for (Map.Entry entry : entries) {
-                String key = (String) entry.getKey();
+            entries.forEach(entry -> {
+                String key =  entry.getKey();
                 String Value = (String) entry.getValue();
                 template.header(key, Value);
                 ThreadAttributes.setThreadAttribute(key, Value);
-            }
+            });
         } catch (Exception e) {
             log.error("setForceHeader", e);
         }

@@ -4,9 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PeppaExampleApplication {
+public class PeppaCoreApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(PeppaExampleApplication.class, args);
+        SpringApplication.run(PeppaCoreApplication.class, args);
     }
+
 }

@@ -18,6 +18,12 @@
     </properties>
     <dependencies>
 
+        <dependency>
+            <groupId>com.peppa</groupId>
+            <artifactId>yiyi-peppa-mq</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!-- =========================== spring-boot start =========================== -->
 
         <dependency>
@@ -29,6 +35,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
 
         <!-- =========================== spring-boot end =========================== -->
