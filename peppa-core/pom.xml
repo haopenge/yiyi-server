@@ -153,6 +153,12 @@
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
             <version>${spring-cloud-version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.peppa</groupId>
+            <artifactId>yiyi-peppa-mq</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
 
         <!-- =========================== spring-cloud end =========================== -->
 

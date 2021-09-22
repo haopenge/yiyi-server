@@ -1,4 +1,4 @@
-package com.husky.intf.mq;
+package com.husky.mq;
 
 /**
  * 消息 主题

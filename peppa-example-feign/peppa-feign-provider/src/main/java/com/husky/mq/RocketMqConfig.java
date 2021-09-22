@@ -1,4 +1,4 @@
-package com.husky.intf.mq;
+package com.husky.mq;
 
 import com.peppa.common.mq.producter.PeppaMqProduceMessage;
 import com.peppa.common.mq.producter.PeppaMqProducter;

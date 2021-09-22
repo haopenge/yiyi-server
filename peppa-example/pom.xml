@@ -15,6 +15,8 @@
     <description>peppa-example</description>
     <properties>
         <java.version>1.8</java.version>
+        <spring-cloud-version>2.1.0.RELEASE</spring-cloud-version>
+
     </properties>
     <dependencies>
 
@@ -58,6 +60,12 @@
         </dependency>
 
         <!-- =========================== my service end =========================== -->
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <version>${spring-cloud-version}</version>
+        </dependency>
 
     </dependencies>
 

@@ -1,4 +1,4 @@
-package com.husky.intf;
+package com.husky;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

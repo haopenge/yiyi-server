@@ -1,6 +1,6 @@
-package com.husky.intf.controller;
+package com.husky.controller;
 
-import com.husky.intf.mq.MqTopicConstant;
+import com.husky.mq.MqTopicConstant;
 import com.peppa.common.mq.producter.PeppaMqProduceMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

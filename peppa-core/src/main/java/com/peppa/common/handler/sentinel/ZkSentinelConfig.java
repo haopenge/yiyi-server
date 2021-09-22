@@ -26,7 +26,7 @@ import java.util.List;
 
 
 @Configuration
-@ConditionalOnProperty(name = {"spring.cloud.sentinel.enabled"}, matchIfMissing = true)
+@ConditionalOnProperty(name = {"spring.cloud.sentinel.enabled"}, matchIfMissing = false)
 public class ZkSentinelConfig {
     @Value("${sentinel.zkurl}")
     private String zkurl;

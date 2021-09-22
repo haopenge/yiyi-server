@@ -37,7 +37,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 
 @Service
-@ConditionalOnProperty(name = {"spring.cloud.sentinel.filter.enabled"}, havingValue = "false")
+@ConditionalOnProperty(name = {"spring.cloud.sentinel.filter.enabled"}, havingValue = "true")
 public class PeppaSentinelRestfulFilter implements Filter {
 
     private boolean httpMethodSpecify = false;
