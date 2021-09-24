@@ -16,10 +16,8 @@ public class ClientDelayProduct {
         ArrayBlockingQueue<MessageExt> messageExts = map.get(consumerGroup);
         if (messageExts == null) {
             synchronized (ClientDelayProduct.class) {
-                if (messageExts == null) {
-                    messageExts = new ArrayBlockingQueue<>(1);
-                    map.put(consumerGroup, messageExts);
-                }
+                messageExts = new ArrayBlockingQueue<>(1);
+                map.put(consumerGroup, messageExts);
             }
         }
         return messageExts;

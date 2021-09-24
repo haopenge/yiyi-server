@@ -3,7 +3,6 @@ package com.husky.controller;
 import com.husky.intf.EatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,8 +21,8 @@ public class EatController {
         return "provider: " + eatService.eatApple();
     }
 
-    @GetMapping("/orange/{who}")
-    public String eatOrange(@PathVariable("who") String who) {
-        return "provider: " + who + " eat orange";
+    @GetMapping("/orange")
+    public String eatOrange(String who) {
+        return eatService.eatOrange(who);
     }
 }

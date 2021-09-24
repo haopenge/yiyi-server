@@ -19,6 +19,7 @@ public class ClientDelayUtil {
                     e.printStackTrace();
                 }
             }
+            assert peek != null;
             long bornTimestamp = peek.getBornTimestamp();
             long now = System.currentTimeMillis();
             long interval = now - bornTimestamp;

@@ -86,7 +86,7 @@ public class PeppaMqConsumer implements Closeable {
             this.isLazy = false;
             log.warn("MQ消费者初始化错误，请升级peppa-service-core版本，目前MQ listener懒加载不生效！");
         }
-        if (idempotent != null && idempotent instanceof Idempotent) {
+        if (idempotent instanceof Idempotent) {
             this.isIdempotent = true;
         }
 

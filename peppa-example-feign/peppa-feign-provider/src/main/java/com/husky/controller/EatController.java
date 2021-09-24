@@ -1,7 +1,6 @@
 package com.husky.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,11 +16,13 @@ public class EatController {
      */
     @GetMapping("/apple")
     public String eatApple() {
+        System.out.println("-------》哎呀呀  我被调用了  com.husky.controller.EatController.eatApple");
         return " 我吃了 ";
     }
 
-    @GetMapping("/orange/{who}")
-    public String eatOrange(@PathVariable("who") String who) {
+    @GetMapping("/orange")
+    public String eatOrange(String who) {
+        System.out.println("-------》哎呀呀  我被调用了  com.husky.controller.EatController.eatOrange");
         return who + " eat orange";
     }
 }
