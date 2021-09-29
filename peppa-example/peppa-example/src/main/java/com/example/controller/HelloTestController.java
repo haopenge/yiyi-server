@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/eat")
-public class FeignTestController {
+public class HelloTestController {
     /**
      * 吃
      */
@@ -19,5 +19,10 @@ public class FeignTestController {
     @GetMapping("/orange/{who}")
     public String eatOrange(@PathVariable("who") String who) {
         return who + " eat orange";
+    }
+
+    @GetMapping("/header")
+    public String getHeader(@RequestHeader(name = "token") String token){
+        return "token  = " + token;
     }
 }
