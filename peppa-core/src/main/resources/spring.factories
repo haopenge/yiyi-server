@@ -1,6 +1,0 @@
-# Auto Configuration
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-com.peppa.common.feign.nosleuth.PeppaPrometheusAutoConfig,\
-com.peppa.common.feign.sleuth.PeppaTracePrometheusAutoConfig,\
-com.peppa.common.feign.FeignListConfig,\
-com.peppa.common.feign.PrometheusFeignCounter

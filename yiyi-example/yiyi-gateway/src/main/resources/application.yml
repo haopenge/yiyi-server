@@ -1,0 +1,55 @@
+server:
+    port: 80
+spring:
+  main:
+        allow-bean-definition-overriding: true
+#  cloud:
+#    # 网关配置
+#        gateway:
+#            routes:
+#                - id: neo_route
+#                  uri: https://www.yuque.com/anhusky
+#                  predicates:
+#                      - Path=/spring-cloud
+#
+#                - id: headerAdd
+#                  uri: http://localhost:18083/eat/header
+#                  predicates:
+#                    - Path=/eat/header
+#                  filters:
+#                    - HeaderAdd=token,yiyi
+#
+#                - id: login_auth
+#                  uri: lb://yiyi-example-api
+#                  predicates:
+#                    - Path=/**
+#                  filters:
+#                    - Auth=/login|/send_code
+  application:
+    name: yiyi-gateway
+# redis 配置
+  redis:
+    host: yiyi.cn
+    port: 6379
+    database: 0
+
+
+# 配置 Eureka Server 注册中心
+eureka:
+  instance:
+    prefer-ip-address: true       # 是否使用 ip 地址注册
+  client:
+    service-url:                  # 设置服务注册中心地址
+      defaultZone: http://localhost:8761/eureka/
+
+# apollo 启动配置
+
+app:
+  id: yiyi-gateway
+apollo:
+  bootstrap:
+    namespaces: application
+    enabled: true
+  meta: http://172.16.146.231:9001
+
+ENV: DEV

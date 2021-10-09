@@ -1,0 +1,6 @@
+# Auto Configuration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.yiyi.common.feign.nosleuth.yiyiPrometheusAutoConfig,\
+com.yiyi.common.feign.sleuth.yiyiTracePrometheusAutoConfig,\
+com.yiyi.common.feign.FeignListConfig,\
+com.yiyi.common.feign.PrometheusFeignCounter
