@@ -32,6 +32,14 @@ spring:
     host: yiyi.cn
     port: 6379
     database: 0
+  cloud:
+    # sentinel 限流配置
+    sentinel:
+      transport:
+        dashboard: yiyi.cn:18085
+        port: 18085
+      # 服务启动直接建立心跳连接
+      eager: true
 
 
 # 配置 Eureka Server 注册中心
