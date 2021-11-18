@@ -3,7 +3,6 @@ package com.husky.controller;
 import com.husky.mq.MqTopicConstant;
 import com.yiyi.common.mq.producter.yiyiMqProduceMessage;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
 /**
  *
