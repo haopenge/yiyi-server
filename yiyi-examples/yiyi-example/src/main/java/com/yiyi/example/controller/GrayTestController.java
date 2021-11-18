@@ -14,7 +14,6 @@ public class GrayTestController {
     @Autowired
     private GrayTestService grayTestService;
 
-
     @GetMapping("/eat_after")
     public String eatAfter() {
         grayTestService.eatAfter();

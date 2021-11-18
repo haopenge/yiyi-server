@@ -12,7 +12,7 @@ public class FallbackController {
 
     @GetMapping("/fallbackA")
     public String fallbackA() {
-        logger.warn("FallbackController.fallbackA fire fuse");
+        logger.warn("FallibackController.fallbackA fire fuse");
         return "fuse data";
     }
 }

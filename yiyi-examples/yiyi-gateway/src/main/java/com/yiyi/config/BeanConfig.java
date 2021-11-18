@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import reactor.core.publisher.Mono;
@@ -16,7 +15,7 @@ import reactor.core.publisher.Mono;
 /**
  * 限流key-规则
  */
-@Configuration
+//@Configuration
 public class BeanConfig {
 
     private Logger logger = LoggerFactory.getLogger(BeanConfig.class);

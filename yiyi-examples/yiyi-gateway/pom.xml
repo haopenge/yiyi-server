@@ -57,11 +57,6 @@
         <!-- =========================== spring-boot/cloud end =========================== -->
 
         <!-- =========================== my service start =========================== -->
-      <!--  <dependency>
-            <groupId>com</groupId>
-            <artifactId>yiyi-service-gray</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>-->
 
         <!-- =========================== my service end =========================== -->
 
@@ -108,9 +103,6 @@
 
 
         <!-- =========================== other service end =========================== -->
-
-
-
     </dependencies>
 
 </project>
