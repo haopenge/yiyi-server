@@ -16,7 +16,7 @@
     <properties>
         <java.version>1.8</java.version>
         <lombok.version>1.18.20</lombok.version>
-        <yiyi-yiyi-mq.version>0.0.1-SNAPSHOT</yiyi-yiyi-mq.version>
+        <yiyi-mq.version>0.0.1-SNAPSHOT</yiyi-mq.version>
         <spring-cloud-version>2.1.0.RELEASE</spring-cloud-version>
     </properties>
     <dependencies>
@@ -49,8 +49,8 @@
         <!-- =========================== my service start =========================== -->
         <dependency>
             <groupId>com.yiyi</groupId>
-            <artifactId>yiyi-yiyi-mq</artifactId>
-            <version>${yiyi-yiyi-mq.version}</version>
+            <artifactId>yiyi-mq</artifactId>
+            <version>${yiyi-mq.version}</version>
         </dependency>
         <!-- =========================== my service end =========================== -->
 
