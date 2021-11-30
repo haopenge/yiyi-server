@@ -1,7 +1,7 @@
 package com.husky.mq;
 
-import com.yiyi.common.mq.producter.yiyiMqProduceMessage;
-import com.yiyi.common.mq.producter.yiyiMqProducter;
+import com.yiyi.producter.YiyiMqProduceMessage;
+import com.yiyi.producter.YiyiMqProducter;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -24,19 +24,19 @@ public class RocketMqConfig {
     private String namesServerAddress;
 
     @Bean(name = "defaultMQProducer", initMethod = "initDefaultMQProducer", destroyMethod = "close")
-    public yiyiMqProducter createDefaultMQProducer() {
-        yiyiMqProducter yiyiMqProducter = new yiyiMqProducter();
-        yiyiMqProducter.setNamesServerAddress(namesServerAddress);
-        yiyiMqProducter.setProducerGroup(group);
-        return yiyiMqProducter;
+    public YiyiMqProducter createDefaultMQProducer() {
+        YiyiMqProducter mqProducter = new YiyiMqProducter();
+        mqProducter.setNamesServerAddress(namesServerAddress);
+        mqProducter.setProducerGroup(group);
+        return mqProducter;
     }
 
     @Bean
-    public yiyiMqProduceMessage yiyiMqProduceMessageFactoryBean(@Qualifier("defaultMQProducer") yiyiMqProducter defaultMQProducer) {
-        yiyiMqProduceMessage yiyiMqProduceMessage = new yiyiMqProduceMessage();
+    public YiyiMqProduceMessage yiyiMqProduceMessageFactoryBean(@Qualifier("defaultMQProducer") YiyiMqProducter defaultMQProducer) {
+        YiyiMqProduceMessage mqProduceMessage = new YiyiMqProduceMessage();
         if(defaultMQProducer != null){
-            yiyiMqProduceMessage.setDefaultMQProducer(defaultMQProducer.getDefaultMQProducer());
+            mqProduceMessage.setDefaultMQProducer(defaultMQProducer.getDefaultMQProducer());
         }
-        return yiyiMqProduceMessage;
+        return mqProduceMessage;
     }
 }

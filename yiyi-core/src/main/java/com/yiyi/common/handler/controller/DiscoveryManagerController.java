@@ -1,7 +1,7 @@
 package com.yiyi.common.handler.controller;
 
 import com.netflix.discovery.EurekaClient;
-import com.yiyi.common.handler.monitor.yiyiHealth;
+import com.yiyi.common.handler.monitor.YiyiHealth;
 import com.yiyi.common.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,7 +41,7 @@ public class DiscoveryManagerController {
                     DiscoveryManagerController.log.info("clean eureka list start");
                     if (DiscoveryManagerController.this.eurekaClient != null) {
                         DiscoveryManagerController.this.eurekaClient.shutdown();
-                        yiyiHealth.isEurekadown = true;
+                        YiyiHealth.isEurekadown = true;
                     }
                     DiscoveryManagerController.log.info("eureka offline!");
                     DiscoveryManagerController.log.info("{} seconds later server will suicide!", DiscoveryManagerController.this.killsleep);

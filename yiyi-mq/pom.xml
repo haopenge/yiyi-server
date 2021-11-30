@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.yiyi</groupId>
-    <artifactId>yiyi-yiyi-mq</artifactId>
+    <artifactId>yiyi-mq</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>yiyi-mq</name>
     <description>yiyi-mq</description>
@@ -45,7 +45,7 @@
         <!-- =========================== my service start =========================== -->
         <dependency>
             <groupId>com</groupId>
-            <artifactId>yiyi-yiyi-service-gray</artifactId>
+            <artifactId>yiyi-service-gray</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <!-- =========================== my service end =========================== -->

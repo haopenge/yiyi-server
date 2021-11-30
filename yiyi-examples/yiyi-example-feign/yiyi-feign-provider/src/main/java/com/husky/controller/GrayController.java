@@ -1,8 +1,11 @@
 package com.husky.controller;
 
 import com.husky.mq.MqTopicConstant;
-import com.yiyi.common.mq.producter.yiyiMqProduceMessage;
+import com.yiyi.producter.YiyiMqProduceMessage;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
@@ -12,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class GrayController {
 
     @Autowired
-    private yiyiMqProduceMessage message;
+    private YiyiMqProduceMessage message;
 
     /**
      * 饭后操作

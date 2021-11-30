@@ -8,22 +8,23 @@
         <version>2.1.3.RELEASE</version>
     </parent>
     <groupId>com</groupId>
-    <artifactId>yiyi-yiyi-core</artifactId>
+    <artifactId>yiyi-core</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>yiyi-yiyi-core</name>
-    <description>yiyi-yiyi-core</description>
+    <name>yiyi-core</name>
+    <description>yiyi-core</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-cloud-version>2.1.0.RELEASE</spring-cloud-version>
-        <yiyi-yiyi-mq.version>0.0.1-SNAPSHOT</yiyi-yiyi-mq.version>
+        <yiyi-mq.version>0.0.1-SNAPSHOT</yiyi-mq.version>
         <fastjson.version>1.2.78</fastjson.version>
         <apollo-yiyi-client.version>1.2.0</apollo-yiyi-client.version>
         <simpleclient.version>0.0.26</simpleclient.version>
         <micrometer-registry-prometheus.version>1.1.3</micrometer-registry-prometheus.version>
         <brave.version>5.6.1.0-SNAPSHOT</brave.version>
+        <apollo-client.version>1.9.1</apollo-client.version>
     </properties>
 
     <dependencies>
@@ -74,8 +75,8 @@
 
         <dependency>
             <groupId>com.ctrip.framework.apollo</groupId>
-            <artifactId>apollo-yiyi-client</artifactId>
-            <version>${apollo-yiyi-client.version}</version>
+            <artifactId>apollo-client</artifactId>
+            <version>${apollo-client.version}</version>
         </dependency>
 
         <dependency>
@@ -94,10 +95,17 @@
 
 
         <!-- =========================== my service start =========================== -->
+
+        <dependency>
+            <groupId>com.ctrip.framework.apollo</groupId>
+            <artifactId>apollo-client</artifactId>
+            <version>1.9.1</version>
+            <scope>compile</scope>
+        </dependency>
         <dependency>
             <groupId>com.yiyi</groupId>
-            <artifactId>yiyi-yiyi-mq</artifactId>
-            <version>${yiyi-yiyi-mq.version}</version>
+            <artifactId>yiyi-mq</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
 

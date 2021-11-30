@@ -9,9 +9,7 @@ import ch.qos.logback.core.spi.ContextAwareBase;
 import ch.qos.logback.core.spi.LifeCycle;
 
 
-public class LogbackStartupListener
-        extends ContextAwareBase
-        implements LoggerContextListener, LifeCycle {
+public class LogbackStartupListener extends ContextAwareBase implements LoggerContextListener, LifeCycle {
     private boolean started = false;
 
     public void start() {

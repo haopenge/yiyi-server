@@ -1,7 +1,6 @@
 package com.yiyi.common.exception;
 
-public class CommonException
-        extends Exception {
+public class CommonException extends Exception {
     private int code;
     private Object data;
 
