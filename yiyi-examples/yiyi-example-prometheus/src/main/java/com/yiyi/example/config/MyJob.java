@@ -18,7 +18,7 @@ public class MyJob {
 
 
     @Async("main")
-    @Scheduled(fixedDelay = 500)
+    @Scheduled(fixedDelay = 100)
     public void tpsRequestHandle1() {
         jobMetrics.handleRequest("save");
     }
