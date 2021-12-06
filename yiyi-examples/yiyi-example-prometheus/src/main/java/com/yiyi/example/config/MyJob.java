@@ -20,14 +20,14 @@ public class MyJob {
     @Async("main")
     @Scheduled(fixedDelay = 500)
     public void tpsRequestHandle1() {
-        jobMetrics.handleRequest("192.168.1.1");
+        jobMetrics.handleRequest("save");
     }
 
 
     @Async("main")
     @Scheduled(fixedDelay = 1000)
     public void tpsRequestHandle2() {
-        jobMetrics.handleRequest("192.168.1.2");
+        jobMetrics.handleRequest("update");
     }
 
 

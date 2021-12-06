@@ -15,7 +15,7 @@ public class JobMetrics {
     @Value("${spring.application.name}")
     private String application;
 
-    String [] labelNameArray = {"application", "instance", "topic", "group"};
+    String [] labelNameArray = {"application", "method", "topic", "group"};
 
     /**
      * 统计mp 消息的 tps，
@@ -68,6 +68,58 @@ public class JobMetrics {
 
     /**
      * 处理时长分组
+     *<pre>
+     *     使用此类型，需要提前知晓 le 分组的标签
+     *
+     * 以下给出 按百分比展示的promQL 语句：
+     * ============ 【左边】================
+     * sum(rate(mq_message_deal_time_histogram_bucket
+     *         {
+     * 		application="yiyi-example-prometheus",topic="EAT_FINISH",group="EAT_FINISH_GROUP",le="1.0"
+     *        }[1m]))
+     * /
+     * sum(rate(mq_message_deal_time_histogram_count
+     *    {
+     * 		application="yiyi-example-prometheus",topic="EAT_FINISH",group="EAT_FINISH_GROUP"
+     *    }[1m]))
+     *
+     *
+     * ============ 【中间】================
+     *
+     *(sum(rate(mq_message_deal_time_histogram_bucket
+     *        {
+     * 		application="yiyi-example-prometheus",topic="EAT_FINISH",group="EAT_FINISH_GROUP",le="2.5"
+     *    }[1m]))
+     *
+     * -sum(rate(mq_message_deal_time_histogram_bucket
+     *    {
+     * 		application="yiyi-example-prometheus",topic="EAT_FINISH",group="EAT_FINISH_GROUP",le="1.0"
+     *    }[1m])))
+     * /sum(rate(mq_message_deal_time_histogram_count
+     *    {
+     * 		application="yiyi-example-prometheus",topic="EAT_FINISH",group="EAT_FINISH_GROUP"
+     *    }[1m]))
+     *
+     *
+     * ============ 【后边】================
+     *
+     *(sum(rate(mq_message_deal_time_histogram_count
+     *        {
+     * 		application="yiyi-example-prometheus",topic="EAT_FINISH",group="EAT_FINISH_GROUP"
+     *    }[1m]))
+     * -sum(rate(mq_message_deal_time_histogram_bucket
+     *    {
+     * 		application="yiyi-example-prometheus",topic="EAT_FINISH",group="EAT_FINISH_GROUP",le="10.0"
+     *    }[1m])))
+     * /sum(rate(mq_message_deal_time_histogram_count
+     *    {
+     * 		application="yiyi-example-prometheus",topic="EAT_FINISH",group="EAT_FINISH_GROUP"
+     *    }[1m]))
+     *
+     *
+     *</pre>
+     *
+     *
      */
      private final Histogram dealTimeHistogram = Histogram.build()
              .name("mq_message_deal_time_histogram")
@@ -76,10 +128,13 @@ public class JobMetrics {
              .create();
 
 
+    /**
+     *
+     * 模拟请求处理，实际使用 可以自行结合AOP 与 公司整合的MQ consumer 进行
+     */
+    void handleRequest(String method){
 
-    void handleRequest(String instance){
-
-        String [] labelArray = {"yiyi-example-prometheus",instance,"EAT_FINISH","EAT_FINISH_GROUP"};
+        String [] labelArray = {"yiyi-example-prometheus",method,"EAT_FINISH","EAT_FINISH_GROUP"};
 
         // 处理数组
         workingThreads.labels(labelArray).inc();

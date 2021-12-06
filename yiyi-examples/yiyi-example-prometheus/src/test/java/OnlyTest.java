@@ -8,8 +8,11 @@ import java.util.Map;
  */
 public class OnlyTest {
 
+
     public static void main(String[] args) {
-        String target = "mq_message_working_threads%7Bapplication%3D%22peppa-learning-situation-listener%22%2Ctopic%3D%22CLASSROOM_STUDENT_INTERACTIVE%22%2Cgroup%3D%22CLASSROOM_STUDENT_INTERACTIVE_GROUP%22%7D";
+
+        String target = "(sum(rate(mq_message_consume_delay_time_histogram_bucket%7Bapplication%3D%22peppa-carnival-classroom-listener%22%2Ctopic%3D%22CARNIVAL_CLASSROOM_EVENT_TOPIC%22%2Cgroup%3D%22PEPPA-CARNIVAL_CLASSROOM_EVENT_CONSUMER%22%2Cle%3D%221000000.0%22%7D%5B1m%5D))-sum(rate(mq_message_consume_delay_time_histogram_bucket%7Bapplication%3D%22peppa-carnival-classroom-listener%22%2Ctopic%3D%22CARNIVAL_CLASSROOM_EVENT_TOPIC%22%2Cgroup%3D%22PEPPA-CARNIVAL_CLASSROOM_EVENT_CONSUMER%22%2Cle%3D%22500.0%22%7D%5B1m%5D)))%2Fsum(rate(mq_message_consume_delay_time_histogram_count%7Bapplication%3D%22peppa-carnival-classroom-listener%22%2Ctopic%3D%22CARNIVAL_CLASSROOM_EVENT_TOPIC%22%2Cgroup%3D%22PEPPA-CARNIVAL_CLASSROOM_EVENT_CONSUMER%22%7D%5B1m%5D))";
+
         System.out.println(replaceArray(target));
     }
 
