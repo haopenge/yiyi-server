@@ -8,9 +8,9 @@
 		<version>2.1.3.RELEASE</version>
 	</parent>
 	<groupId>com.yiyi</groupId>
-	<artifactId>yiyi-ribbon-two</artifactId>
+	<artifactId>yiyi-ribbon-eat-two</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>yiyi-ribbon</name>
+	<name>yiyi-ribbon-eat-two</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>1.8</java.version>
