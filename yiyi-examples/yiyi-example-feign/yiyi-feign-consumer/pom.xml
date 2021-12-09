@@ -9,7 +9,7 @@
     </parent>
 
     <groupId>com.husky</groupId>
-    <artifactId>husky-feign-consumer</artifactId>
+    <artifactId>yiyi-feign-consumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>yiyi-feign-consumer</name>
     <description>yiyi-feign-consumer</description>
@@ -23,7 +23,7 @@
 
         <dependency>
             <groupId>com.husky</groupId>
-            <artifactId>husky-feign-intf</artifactId>
+            <artifactId>yiyi-feign-intf</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 

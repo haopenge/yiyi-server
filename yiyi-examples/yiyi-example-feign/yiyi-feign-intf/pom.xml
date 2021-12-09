@@ -4,9 +4,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.husky</groupId>
-    <artifactId>husky-feign-intf</artifactId>
+    <artifactId>yiyi-feign-intf</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>husky-feign-intf</name>
+    <name>yiyi-feign-intf</name>
     <description>feign服务引用接口</description>
 
     <properties>
