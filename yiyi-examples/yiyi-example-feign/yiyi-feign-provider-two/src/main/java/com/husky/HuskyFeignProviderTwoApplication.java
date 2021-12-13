@@ -6,10 +6,10 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 @SpringBootApplication
 @EnableEurekaClient
-public class HuskyFeignProviderApplication {
+public class HuskyFeignProviderTwoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HuskyFeignProviderApplication.class, args);
+        SpringApplication.run(HuskyFeignProviderTwoApplication.class, args);
     }
 
 }

@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.husky</groupId>
-    <artifactId>yiyi-feign-provider</artifactId>
+    <artifactId>yiyi-feign-provider-two</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>yiyi-feign-provider</name>
-    <description>yiyi-feign-provider</description>
+    <name>yiyi-feign-provider-two</name>
+    <description>yiyi-feign-provider-two</description>
     <properties>
         <java.version>1.8</java.version>
         <lombok.version>1.18.20</lombok.version>
