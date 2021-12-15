@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 /**
  * 吃饭
  */
-@FeignClient(name = "yiyi-FEIGN-PROVIDER", path = "/eat")
+@FeignClient(name = "yiyi-feign-provider", path = "/eat")
 public interface EatService {
     /**
      * 吃
