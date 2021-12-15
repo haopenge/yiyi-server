@@ -2,7 +2,8 @@ package com.yiyi.common.grayconfig;
 
 import com.yiyi.common.grayconfig.apolloconfig.MqGrayApolloConfig;
 import com.yiyi.common.util.IpUtils;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -10,9 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.Enumeration;
 
 
-@Slf4j
 public class RequestHeaderHandlerInterceptor implements HandlerInterceptor {
 
+    private Logger log = LoggerFactory.getLogger(RequestHeaderHandlerInterceptor.class);
 
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         try {

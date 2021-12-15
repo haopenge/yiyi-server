@@ -16,14 +16,14 @@
     <properties>
         <java.version>1.8</java.version>
         <spring-cloud-version>2.1.0.RELEASE</spring-cloud-version>
-        <husky-feign-intf.version>0.0.1-SNAPSHOT</husky-feign-intf.version>
+        <yiyi-feign-intf.version>0.0.1-SNAPSHOT</yiyi-feign-intf.version>
     </properties>
     <dependencies>
 
         <dependency>
             <groupId>com.husky</groupId>
-            <artifactId>husky-feign-intf</artifactId>
-            <version>${husky-feign-intf.version}</version>
+            <artifactId>yiyi-feign-intf</artifactId>
+            <version>${yiyi-feign-intf.version}</version>
         </dependency>
 
         <!-- =========================== spring-boot start =========================== -->

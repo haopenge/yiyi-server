@@ -3,7 +3,8 @@ package com.yiyi.common.grayconfig;
 import com.yiyi.common.util.IpUtils;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
@@ -17,8 +18,9 @@ import java.util.*;
 
 @Configuration
 @ConditionalOnProperty(prefix = "yiyi", name = {"gray"}, havingValue = "true")
-@Slf4j
 public class FeignHeaderRequestInterceptor implements RequestInterceptor {
+
+    private Logger log = LoggerFactory.getLogger(FeignHeaderRequestInterceptor.class);
 
     @Value("${forceHeader:}")
     private String forceHeader;

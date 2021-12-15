@@ -4,9 +4,10 @@ import com.ctrip.framework.apollo.Config;
 import com.ctrip.framework.apollo.ConfigService;
 import com.ctrip.framework.apollo.model.ConfigChangeEvent;
 import com.ctrip.framework.apollo.spring.annotation.ApolloConfigChangeListener;
-import com.yiyi.common.grayconfig.ThreadAttributes;
 import com.yiyi.common.constant.ConstantProperties;
-import lombok.extern.slf4j.Slf4j;
+import com.yiyi.common.grayconfig.ThreadAttributes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,8 +16,9 @@ import java.util.HashMap;
 
 @Configuration
 @ConditionalOnProperty(prefix = "yiyi", name = {"gray"}, havingValue = "true")
-@Slf4j
 public class MqGrayApolloConfig {
+
+    private Logger log = LoggerFactory.getLogger(MqGrayApolloConfig.class);
     private static String forcePodenv = "";
 
     private static HashMap<String, String> MQ_GRAY_CONFIG = null;
