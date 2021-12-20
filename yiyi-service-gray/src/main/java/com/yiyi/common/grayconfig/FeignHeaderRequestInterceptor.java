@@ -17,10 +17,10 @@ import java.util.*;
 
 
 @Configuration
-@ConditionalOnProperty(prefix = "yiyi", name = {"gray"}, havingValue = "true")
+@ConditionalOnProperty(prefix = "yi", name = {"gray"}, havingValue = "true")
 public class FeignHeaderRequestInterceptor implements RequestInterceptor {
 
-    private Logger log = LoggerFactory.getLogger(FeignHeaderRequestInterceptor.class);
+    private final Logger log = LoggerFactory.getLogger(FeignHeaderRequestInterceptor.class);
 
     @Value("${forceHeader:}")
     private String forceHeader;
@@ -53,7 +53,7 @@ public class FeignHeaderRequestInterceptor implements RequestInterceptor {
 
 
     private void setForceHeader(RequestTemplate template) {
-        String podkey = "yiyi-".concat("podenv");
+        String podkey = "yi-".concat("podenv");
         String podenv = ThreadAttributes.getHeaderValue("podenv");
         if (podenv != null && podenv.trim().length() > 0) {
             log.info("feign调用:{}threadlocal中带独立环境标记{},继续在feign调用中传递下去", template.url(), podenv);
@@ -80,7 +80,7 @@ public class FeignHeaderRequestInterceptor implements RequestInterceptor {
         }
     }
 
-
+    @Override
     public void apply(RequestTemplate template) {
         try {
             ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();

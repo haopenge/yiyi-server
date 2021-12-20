@@ -5,6 +5,4 @@ package com.yiyi.common.constant;
  */
 public interface ConstantProperties {
     String INDEPENDENT_ENV_HEAD_KEY = "yiyi-podenv";
-
-    String POD_ENV = "podenv";
 }

@@ -98,31 +98,12 @@ public class MqGrayApolloConfig {
         return MQ_GRAY_CONFIG.get(topic);
     }
 
-
     public static String getTopicGroupPodEnv(String topicgroup) {
         if (MQ_GRAY_CONFIG == null) {
             return null;
         }
         return MQ_GRAY_CONFIG.get(topicgroup);
     }
-
-
-    public static String getOpenidPodEnv(String openid) {
-        if (WX_GRAY_CONFIG == null) {
-            return null;
-        }
-        return WX_GRAY_CONFIG.get(openid);
-    }
-
-
-    public static String invokeOpenidPodEnv(String openid) {
-        String podenv = getOpenidPodEnv(openid);
-        if (podenv != null && podenv.trim().length() > 0) {
-            ThreadAttributes.setThreadAttribute(ConstantProperties.INDEPENDENT_ENV_HEAD_KEY, podenv);
-        }
-        return podenv;
-    }
-
 
     public static String tryForcePodEnv() {
         if (forcePodenv != null && forcePodenv.trim().length() > 0) {
