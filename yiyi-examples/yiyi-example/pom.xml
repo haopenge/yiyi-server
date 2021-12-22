@@ -45,6 +45,12 @@
             <version>${spring-cloud-version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.yiyi</groupId>
+            <artifactId>yiyi-msg-starter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
 </project>
