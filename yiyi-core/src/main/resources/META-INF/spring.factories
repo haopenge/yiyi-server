@@ -1,3 +1,4 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
 com.yi.core.ribbon.RibbonConfiguration,\
-com.yi.core.config.FeignHeaderIntercept
+com.yi.core.config.FeignHeaderIntercept,\
+com.yi.core.config.GatewayPropertiesRefresher
