@@ -1,1 +1,3 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.yi.core.config.RibbonConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+com.yi.core.ribbon.RibbonConfiguration,\
+com.yi.core.config.FeignHeaderIntercept

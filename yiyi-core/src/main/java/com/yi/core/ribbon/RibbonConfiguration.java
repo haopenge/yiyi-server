@@ -1,8 +1,7 @@
-package com.yi.core.config;
+package com.yi.core.ribbon;
 
 
 import com.netflix.loadbalancer.IRule;
-import com.yi.core.ribbon.GrayEnvRuler;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,7 +1,7 @@
 package com.yiyi.filter;
 
 
-import com.yi.core.ribbon.Constants;
+import com.yi.core.common.Constants;
 import com.yi.core.ribbon.EnvHolder;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;

@@ -26,6 +26,17 @@
 			<artifactId>yiyi-core</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
+			<groupId>com.husky</groupId>
+			<artifactId>yiyi-feign-intf</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.78</version>
+		</dependency>
 	</dependencies>
 
 	<build>

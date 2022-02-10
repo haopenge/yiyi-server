@@ -28,12 +28,6 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-            <version>${spring-cloud-version}</version>
-        </dependency>
-
         <!-- =========================== spring-boot/cloud end =========================== -->
 
 
@@ -47,13 +41,13 @@
         <!-- =========================== other service end =========================== -->
 
         <!-- =========================== my service start =========================== -->
-        <dependency>
-            <groupId>com.yiyi</groupId>
-            <artifactId>yiyi-mq</artifactId>
-            <version>${yiyi-mq.version}</version>
-        </dependency>
-        <!-- =========================== my service end =========================== -->
 
+        <!-- =========================== my service end =========================== -->
+        <dependency>
+            <groupId>com.yi.core</groupId>
+            <artifactId>yiyi-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 
     </dependencies>
 
