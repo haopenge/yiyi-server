@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.yiyi.acc.Idempotent;
 import com.yiyi.base.ConsumeMode;
 import com.yiyi.base.MqClient;
-import com.yiyi.base.YiyiInfoLevelException;
+import com.yiyi.base.YiInfoLevelException;
 import com.yiyi.base.YiyiMqException;
 import com.yiyi.span.MqSpan;
 import org.apache.rocketmq.client.consumer.*;
@@ -197,7 +197,7 @@ public class YiyiMqConsumer implements Closeable {
                         YiyiMqConsumer.log.info("重复消费，返回消费成功, e", (Throwable) pe);
                         span.error(s, (Throwable) pe);
                         return ConsumeOrderlyStatus.SUCCESS;
-                    } catch (YiyiInfoLevelException pile) {
+                    } catch (YiInfoLevelException pile) {
                         YiyiMqConsumer.log.info("pile push处理顺序消息异常  e", (Throwable) pile);
 
                         try {
@@ -278,7 +278,7 @@ public class YiyiMqConsumer implements Closeable {
                         YiyiMqConsumer.log.info("重复消费，返回消费成功, e", (Throwable) pe);
                         span.error(s, (Throwable) pe);
                         return ConsumeConcurrentlyStatus.CONSUME_SUCCESS;
-                    } catch (YiyiInfoLevelException pile) {
+                    } catch (YiInfoLevelException pile) {
                         YiyiMqConsumer.log.info("pile push处理消息异常,延时重新消费 e", (Throwable) pile);
 
 
@@ -354,7 +354,7 @@ public class YiyiMqConsumer implements Closeable {
                                     consumer.updateConsumeOffset(mq, pullResult.getNextBeginOffset());
                                     pullTaskContext.setPullNextDelayTimeMillis(100);
                                     span.error(s, (Throwable) pe);
-                                } catch (YiyiInfoLevelException pile) {
+                                } catch (YiInfoLevelException pile) {
                                     YiyiMqConsumer.log.info("pile pull list 业务处理失败,e", (Throwable) pile);
 
                                     boolean b = YiyiMqConsumer.this.pullRetry(method, mqConsumerCallback, msgFoundList);
@@ -386,7 +386,7 @@ public class YiyiMqConsumer implements Closeable {
                                     span.error(s, (Throwable) pe);
                                     consumer.updateConsumeOffset(mq, pullResult.getNextBeginOffset());
                                     pullTaskContext.setPullNextDelayTimeMillis(100);
-                                } catch (YiyiInfoLevelException pile) {
+                                } catch (YiInfoLevelException pile) {
                                     YiyiMqConsumer.log.info("pile pull messageExt 业务处理失败,e", (Throwable) pile);
 
                                     boolean b = YiyiMqConsumer.this.pullRetry(method, mqConsumerCallback, messageExt);

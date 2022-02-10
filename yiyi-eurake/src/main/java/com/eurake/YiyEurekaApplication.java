@@ -6,10 +6,10 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
 @EnableEurekaServer
-public class YiyiEurekaApplication {
+public class YiyEurekaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(YiyiEurekaApplication.class, args);
+        SpringApplication.run(YiyEurekaApplication.class, args);
     }
 
 }

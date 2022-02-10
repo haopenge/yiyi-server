@@ -6,8 +6,8 @@
     <groupId>com.example</groupId>
     <artifactId>yiyi-gateway</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>yiyi-gateway</name>
-    <description>yiyi-gateway</description>
+    <name>yiy-gateway</name>
+    <description>yiy-gateway</description>
 
 
     <parent>
@@ -80,14 +80,21 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+            <groupId>com.yi.core</groupId>
+            <artifactId>yiyi-core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
-        <dependency>
+
+       <!-- <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis-reactive</artifactId>
+        </dependency>-->
+
+      <!--  <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
-        </dependency>
+        </dependency>-->
 
         <!--alibaba 流量卫士-->
         <dependency>

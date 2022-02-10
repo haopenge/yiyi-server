@@ -23,19 +23,19 @@ public class CorsGatewayFilterFactory extends AbstractGatewayFilterFactory<CorsG
 
     private Logger logger = LoggerFactory.getLogger(CorsGatewayFilterFactory.class);
 
-    @Value("${yiyi.gateway.allowed_headers:}")
+    @Value("${yiy.gateway.allowed_headers:}")
     private String allowedHeaders;
 
-    @Value("${yiyi.gateway.allowed_methods:}")
+    @Value("${yiy.gateway.allowed_methods:}")
     private String allowedMethods;
 
-    @Value("${yiyi.gateway.allowed_origins:}")
+    @Value("${yiy.gateway.allowed_origins:}")
     private String allowedOrigin;
 
-    @Value("${yiyi.gateway.allowed_expose_headers:}")
+    @Value("${yiy.gateway.allowed_expose_headers:}")
     private String alllowedExposeHeaders;
 
-    @Value("${yiyi.gateway.max_age:18000L}")
+    @Value("${yiy.gateway.max_age:18000L}")
     private String maxAge;
 
     @Override

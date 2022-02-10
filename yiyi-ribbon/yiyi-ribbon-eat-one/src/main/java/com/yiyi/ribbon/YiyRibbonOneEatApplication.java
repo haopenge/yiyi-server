@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class YiyiRibbonEatTwoApplication {
+public class YiyRibbonOneEatApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(YiyiRibbonEatTwoApplication.class, args);
+		SpringApplication.run(YiyRibbonOneEatApplication.class, args);
 	}
 
 }
