@@ -1,4 +1,4 @@
-package com.yi.core.config;
+package com.yiyi.config;
 
 import com.ctrip.framework.apollo.model.ConfigChangeEvent;
 import com.ctrip.framework.apollo.spring.annotation.ApolloConfigChangeListener;
